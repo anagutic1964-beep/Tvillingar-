@@ -49,4 +49,41 @@
 </div>
 
 <!-- ===== FIN TVILLINGAR ===== -->
+<!-- ===== CARRITO SIMPLE ===== -->
 
+<div id="carrito" style="
+position:fixed;
+top:20px;
+right:20px;
+width:200px;
+background:white;
+padding:15px;
+border-radius:15px;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+font-family:Arial;
+">
+
+<h3 style="margin:0 0 10px;">🛒 Carrito</h3>
+<ul id="lista" style="padding-left:18px;"></ul>
+
+</div>
+
+<script>
+let carrito = [];
+
+function agregarCarrito(producto){
+  carrito.push(producto);
+  actualizarCarrito();
+}
+
+function actualizarCarrito(){
+  let lista = document.getElementById("lista");
+  lista.innerHTML = "";
+
+  carrito.forEach(item=>{
+    let li = document.createElement("li");
+    li.textContent = item;
+    lista.appendChild(li);
+  });
+}
+</script>
