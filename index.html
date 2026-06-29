@@ -111,12 +111,6 @@ a {
   </div>
 </header>
 
-<!-- CARRITO -->
-<div id="carrito">
-  <h3>🛒 Carrito</h3>
-  <ul id="lista"></ul>
-</div>
-
 <!-- PRODUCTO -->
 <div class="productos">
 
@@ -160,11 +154,12 @@ body {
   text-align: center !important;
   box-shadow: 0 8px 20px rgba(255,47,179,0.15) !important;
   box-sizing: border-box !important;
-}
+
 </style>
 <div class="producto">
 
-  <img src="Gorrodeinvierno.png" alt="Gorro de invierno">
+  
+<img src="Gorrodeinvierno.png" style="width:200px;">
 
   <h3>Gorro de invierno</h3>
   <p>$5.000</p>
@@ -178,7 +173,6 @@ body {
   </a>
 
 </div>
-<img src="Gorrodeinvierno.png" style="width:200px;">
 
 
 <!-- VENTANA -->
@@ -194,23 +188,6 @@ border-radius:15px;
 box-shadow:0 4px 15px rgba(0,0,0,0.2);
 z-index:999;
 ">
-
-<h3>Tu carrito</h3>
-
-<ul id="cartList" style="padding-left:18px;"></ul>
-
-<p id="cartTotal" style="font-weight:bold;">Total: $0</p>
-
-<button onclick="buyAll()" style="
-width:100%;
-padding:10px;
-border:none;
-border-radius:10px;
-background:#25D366;
-color:white;
-font-weight:bold;
-cursor:pointer;
-margin-top:10px;
 ">
 📱 Comprar por WhatsApp
 </button>
@@ -239,34 +216,7 @@ function agregarCarrito(nombre, precio){
   window.cart.push({nombre, precio});
   updateCart();
 }
-
-function updateCart(){
-  let list = document.getElementById("cartList");
-  let totalEl = document.getElementById("cartTotal");
-
-  if(!list || !totalEl) return;
-
-  list.innerHTML = "";
-
-  let total = 0;
-
-  window.cart.forEach(item=>{
-    total += item.precio;
-
-    let li = document.createElement("li");
-    li.textContent = item.nombre + " - $" + item.precio;
-    list.appendChild(li);
-  });
-
-  totalEl.textContent = "Total: $" + total;
-}
-
-function toggleCart(){
-  let box = document.getElementById("cartBox");
-  if(!box) return;
-
-  box.style.display = (box.style.display === "block") ? "none" : "block";
-}
+total += item.precio;
 
 function buyAll(){
   if(window.cart.length === 0){
