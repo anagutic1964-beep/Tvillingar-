@@ -219,6 +219,41 @@ border-radius:15px;
 box-shadow:0 4px 15px rgba(0,0,0,0.2);
 z-index:999;
 ">
+<!-- 🛒 TVILLINGAR CARRITO PORTÁTIL -->
+
+<div style="font-family:Arial;">
+
+<!-- BOTÓN -->
+<button onclick="toggleCarrito()" style="
+padding:12px 16px;
+background:#ff2fb3;
+color:white;
+border:none;
+border-radius:50px;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(255,47,179,0.3);
+position:fixed;
+top:20px;
+right:20px;
+z-index:999;
+">
+🛒 Carrito
+</button>
+
+<!-- VENTANA -->
+<div id="carritoBox" style="
+display:none;
+position:fixed;
+top:80px;
+right:20px;
+width:220px;
+background:white;
+padding:15px;
+border-radius:15px;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
+z-index:999;
+">
 
 <h3 style="margin:0 0 10px;">Tu carrito</h3>
 <ul id="listaCarrito" style="padding-left:18px;"></ul>
@@ -239,10 +274,28 @@ Cerrar
 </div>
 
 </div>
+
+<script>
+window.carrito = window.carrito || [];
+
 function agregarCarrito(producto){
   window.carrito.push(producto);
   actualizarCarrito();
 }
+
+function actualizarCarrito(){
+  let lista = document.getElementById("listaCarrito");
+  if(!lista) return;
+
+  lista.innerHTML = "";
+
+  window.carrito.forEach(item=>{
+    let li = document.createElement("li");
+    li.textContent = item;
+    lista.appendChild(li);
+  });
+}
+
 function toggleCarrito(){
   let box = document.getElementById("carritoBox");
   if(!box) return;
