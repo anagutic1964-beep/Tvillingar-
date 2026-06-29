@@ -429,3 +429,100 @@ function buy(){
   window.open("https://wa.me/56947510065?text=" + msg, "_blank");
 }
 </script>
+<!-- 🛒 CARRITO TVILLINGAR -->
+
+<button onclick="toggle()" style="
+position:fixed;
+top:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:#ff2fb3;
+color:white;
+border:none;
+font-size:18px;
+cursor:pointer;
+z-index:999;
+">
+🛒
+</button>
+
+<div id="box" style="
+display:none;
+position:fixed;
+top:90px;
+right:20px;
+width:230px;
+background:white;
+padding:15px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+font-family:Arial;
+z-index:999;
+">
+
+<h3>Carrito</h3>
+
+<ul id="list"></ul>
+
+<p id="total">Total: $0</p>
+
+<button onclick="buy()" style="
+width:100%;
+padding:10px;
+background:#25D366;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+">
+Comprar
+</button>
+
+</div>
+
+<script>
+let c = [];
+
+function add(n,p){
+  c.push({n,p});
+  render();
+}
+
+function render(){
+  let l = document.getElementById("list");
+  let t = document.getElementById("total");
+
+  l.innerHTML = "";
+  let s = 0;
+
+  c.forEach(x=>{
+    s += x.p;
+    let li = document.createElement("li");
+    li.textContent = x.n + " $" + x.p;
+    l.appendChild(li);
+  });
+
+  t.innerText = "Total: $" + s;
+}
+
+function toggle(){
+  let b = document.getElementById("box");
+  b.style.display = (b.style.display=="block")?"none":"block";
+}
+
+function buy(){
+  let msg = "Hola quiero comprar:%0A";
+  let s = 0;
+
+  c.forEach(x=>{
+    msg += "- " + x.n + " $" + x.p + "%0A";
+    s += x.p;
+  });
+
+  msg += "%0ATotal: $" + s;
+
+  window.open("https://wa.me/56947510065?text="+msg,"_blank");
+}
+</script>
