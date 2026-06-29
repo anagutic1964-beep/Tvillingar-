@@ -251,20 +251,6 @@ function agregarCarrito(producto){
   window.carrito.push(producto);
   actualizarCarrito();
 }
-
-function actualizarCarrito(){
-  let lista = document.getElementById("listaCarrito");
-  if(!lista) return;
-
-  lista.innerHTML = "";
-
-  window.carrito.forEach(item=>{
-    let li = document.createElement("li");
-    li.textContent = item;
-    lista.appendChild(li);
-  });
-}
-
 function toggleCarrito(){
   let box = document.getElementById("carritoBox");
   if(!box) return;
