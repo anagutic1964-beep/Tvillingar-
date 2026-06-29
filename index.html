@@ -15,10 +15,6 @@ font-family:Arial;
 z-index:999;
 ">
 
-<h3 style="margin:0 0 10px;">🛒 Carrito</h3>
-<ul id="lista" style="padding-left:18px;"></ul>
-</div>
-
 <script>
 let carrito = [];
 
@@ -243,10 +239,6 @@ Cerrar
 </div>
 
 </div>
-
-<script>
-window.carrito = window.carrito || [];
-
 function agregarCarrito(producto){
   window.carrito.push(producto);
   actualizarCarrito();
