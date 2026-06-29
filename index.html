@@ -179,3 +179,131 @@ body {
 
 </div>
 <img src="Gorrodeinvierno.png" style="width:200px;">
+<!-- 🛒 TVILLINGAR CARRITO PRO PORTÁTIL -->
+
+<div style="font-family:Arial;">
+
+<!-- BOTÓN CARRITO -->
+<button onclick="toggleCart()" style="
+position:fixed;
+top:20px;
+right:20px;
+padding:12px 16px;
+background:#ff2fb3;
+color:white;
+border:none;
+border-radius:50px;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(255,47,179,0.3);
+z-index:999;
+">
+🛒 Carrito
+</button>
+
+<!-- VENTANA -->
+<div id="cartBox" style="
+display:none;
+position:fixed;
+top:80px;
+right:20px;
+width:240px;
+background:white;
+padding:15px;
+border-radius:15px;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
+z-index:999;
+">
+
+<h3>Tu carrito</h3>
+
+<ul id="cartList" style="padding-left:18px;"></ul>
+
+<p id="cartTotal" style="font-weight:bold;">Total: $0</p>
+
+<button onclick="buyAll()" style="
+width:100%;
+padding:10px;
+border:none;
+border-radius:10px;
+background:#25D366;
+color:white;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+">
+📱 Comprar por WhatsApp
+</button>
+
+<button onclick="toggleCart()" style="
+width:100%;
+padding:8px;
+margin-top:8px;
+border:none;
+border-radius:10px;
+background:#111;
+color:white;
+cursor:pointer;
+">
+Cerrar
+</button>
+
+</div>
+
+</div>
+
+<script>
+window.cart = window.cart || [];
+
+function agregarCarrito(nombre, precio){
+  window.cart.push({nombre, precio});
+  updateCart();
+}
+
+function updateCart(){
+  let list = document.getElementById("cartList");
+  let totalEl = document.getElementById("cartTotal");
+
+  if(!list || !totalEl) return;
+
+  list.innerHTML = "";
+
+  let total = 0;
+
+  window.cart.forEach(item=>{
+    total += item.precio;
+
+    let li = document.createElement("li");
+    li.textContent = item.nombre + " - $" + item.precio;
+    list.appendChild(li);
+  });
+
+  totalEl.textContent = "Total: $" + total;
+}
+
+function toggleCart(){
+  let box = document.getElementById("cartBox");
+  if(!box) return;
+
+  box.style.display = (box.style.display === "block") ? "none" : "block";
+}
+
+function buyAll(){
+  if(window.cart.length === 0){
+    alert("Tu carrito está vacío");
+    return;
+  }
+
+  let msg = "Hola quiero comprar:%0A";
+  let total = 0;
+
+  window.cart.forEach(item=>{
+    msg += "- " + item.nombre + " $" + item.precio + "%0A";
+    total += item.precio;
+  });
+
+  msg += "%0ATotal: $" + total;
+
+  window.open("https://wa.me/56947510065?text=" + msg, "_blank");
+}
+</script>
