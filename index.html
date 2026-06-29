@@ -179,27 +179,7 @@ body {
 
 </div>
 <img src="Gorrodeinvierno.png" style="width:200px;">
-<!-- 🛒 TVILLINGAR CARRITO PRO PORTÁTIL -->
 
-<div style="font-family:Arial;">
-
-<!-- BOTÓN CARRITO -->
-<button onclick="toggleCart()" style="
-position:fixed;
-top:20px;
-right:20px;
-padding:12px 16px;
-background:#ff2fb3;
-color:white;
-border:none;
-border-radius:50px;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 4px 10px rgba(255,47,179,0.3);
-z-index:999;
-">
-🛒 Carrito
-</button>
 
 <!-- VENTANA -->
 <div id="cartBox" style="
@@ -356,23 +336,3 @@ body {
 </style>
 
 <script>
-/* 🛒 CARRO UNIVERSAL (NO TOCA TU CÓDIGO EXISTENTE) */
-window.agregarCarrito = window.agregarCarrito || function(nombre, precio){
-
-  if(!window._carrito) window._carrito = [];
-
-  window._carrito.push({nombre, precio});
-
-  console.log("Agregado:", nombre, precio);
-};
-</script>
-<style>
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-body {
-  overflow-x: hidden;
-}
-</style>
