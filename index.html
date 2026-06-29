@@ -317,3 +317,52 @@ function buyAll(){
   margin: 0 auto;
 }
 </style>
+<style>
+/* 🔧 ARREGLO UNIVERSAL TVILLINGAR */
+
+/* evita que imágenes se deformen o se salgan */
+.producto img {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+/* ordena productos aunque estén medio mal puestos */
+.productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* asegura tarjetas limpias */
+.producto {
+  background: white;
+  border-radius: 20px;
+  padding: 15px;
+  width: 240px;
+  box-shadow: 0 8px 20px rgba(255,47,179,0.15);
+  text-align: center;
+}
+
+/* evita scroll raro o cosas al costado */
+body {
+  overflow-x: hidden;
+}
+</style>
+
+<script>
+/* 🛒 CARRO UNIVERSAL (NO TOCA TU CÓDIGO EXISTENTE) */
+window.agregarCarrito = window.agregarCarrito || function(nombre, precio){
+
+  if(!window._carrito) window._carrito = [];
+
+  window._carrito.push({nombre, precio});
+
+  console.log("Agregado:", nombre, precio);
+};
+</script>
